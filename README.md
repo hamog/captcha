@@ -45,7 +45,7 @@ return [
 
 ###Preview
 
-![captcha-preview](https://github.com/hamog/captcha/assets/img/captcha.png)
+![captcha-preview](https://github.com/hamog/captcha/blob/master/assets/img/captcha.png)
 
 ###Usage
 
