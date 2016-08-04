@@ -1,5 +1,5 @@
 # captcha
-##Simple Captcha for laravel 5.2
+##Simple Captcha for laravel 5
 
 ###Installation
 
