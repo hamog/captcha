@@ -1,0 +1,28 @@
+{
+  "name": "hamog/captcha",
+  "type": "package",
+  "description": "Simple Laravel 5.2 Captcha Package",
+  "keywords": ["laravel5 Captcha", "laravel5.2", "Captcha"],
+  "homepage": "https://github.com/hamog/captcha",
+  "authors": [
+    {
+      "name": "Hashem Moghaddari",
+      "email": "hashemm364@gmail.com",
+      "homepage": "https://github.com/hamog",
+      "role": "Web Developer"
+    }
+  ],
+  "require": {
+    "php": ">=5.4",
+    "ext-gd": "*"
+  },
+  "autoload": {
+    "psr-4": {
+      "Hamog\\Captcha\\": "src/"
+    },
+    "files": [
+      "src/helpers.php"
+    ]
+  },
+  "minimum-stability": "dev"
+}
