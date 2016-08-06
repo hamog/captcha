@@ -146,7 +146,6 @@ class Captcha
     public function img()
     {
         return '<img src="' . $this->src() . '" alt="captcha">';
-        return '<img src="' . url('captcha') . '?' . str_random(8) . '" alt="captcha">';
     }
 
     /**
