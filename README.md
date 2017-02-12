@@ -28,7 +28,7 @@ Find the aliases key in config/app.php.
 
 To use your own settings, publish config.
 ```
-php artisan vendor:publish
+php artisan vendor:publish --provider="Hamog\Captcha\CaptchaServiceProvider"
 ```
 
 To use your own settings in config/captcha.php, publish config.
