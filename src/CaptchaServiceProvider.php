@@ -23,12 +23,12 @@ class CaptchaServiceProvider extends ServiceProvider
         ], 'config');
 
         // HTTP routing
-        $this->app['router']->get('captcha', '\Hamog\Captcha\CaptchaController@getCaptcha')->middleware('web');
+        $this->loadRoutesFrom(__DIR__.'/routes.php');
 
         // Validator extensions
         $this->app['validator']->extend('captcha', function($attribute, $value, $parameters)
         {
-            return \Captcha::check($value);
+            return captcha_check($value);
         });
 
     }
