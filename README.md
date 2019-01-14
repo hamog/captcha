@@ -1,7 +1,7 @@
 # captcha
-##Simple Captcha for laravel 5
+## Simple Captcha for laravel 5
 
-###Installation
+### Installation
 
 Require this package with composer:
 ```
@@ -24,7 +24,7 @@ Find the aliases key in config/app.php.
 ]
 ```
 
-###Configuration
+### Configuration
 
 To use your own settings, publish config.
 ```
@@ -43,11 +43,11 @@ return [
 ];
 ```
 
-###Preview
+### Preview
 
 ![captcha-preview](https://github.com/hamog/captcha/blob/master/assets/img/captcha.png)
 
-###Usage
+### Usage
 
 return captcha image:
 ```php
@@ -73,7 +73,7 @@ return captcha src:
 {!! captcha_src() !!}
 ```
 
-###Validation
+### Validation
 
 Using captcha rule:
 ```php
