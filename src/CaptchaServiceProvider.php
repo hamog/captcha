@@ -3,9 +3,10 @@
 namespace Hamog\Captcha;
 
 use Illuminate\Support\ServiceProvider;
+
 /**
- * Class CaptchaServiceProvider
- * @package Hamog\Captcha
+ * Class CaptchaServiceProvider.
+ *
  * @author Hashem Moghaddari
  */
 class CaptchaServiceProvider extends ServiceProvider
@@ -19,18 +20,16 @@ class CaptchaServiceProvider extends ServiceProvider
     {
         // Publish configuration files
         $this->publishes([
-            __DIR__.'/../config/captcha.php' => config_path('captcha.php')
+            __DIR__.'/../config/captcha.php' => config_path('captcha.php'),
         ], 'config');
 
         // HTTP routing
         $this->loadRoutesFrom(__DIR__.'/routes.php');
 
         // Validator extensions
-        $this->app['validator']->extend('captcha', function($attribute, $value, $parameters)
-        {
+        $this->app['validator']->extend('captcha', function ($attribute, $value, $parameters) {
             return captcha_check($value);
         });
-
     }
 
     /**
@@ -41,7 +40,7 @@ class CaptchaServiceProvider extends ServiceProvider
     public function register()
     {
         //Bind captcha class
-        $this->app->bind('captcha', function() {
+        $this->app->bind('captcha', function () {
             return new Captcha();
         });
     }

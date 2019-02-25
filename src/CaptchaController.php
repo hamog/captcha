@@ -5,14 +5,12 @@ namespace Hamog\Captcha;
 use App\Http\Controllers\Controller;
 
 /**
- * Class CaptchaController
- *
- * @package Hamog\Captcha
+ * Class CaptchaController.
  */
 class CaptchaController extends Controller
 {
     /**
-     * Get captcha image
+     * Get captcha image.
      *
      * @param Captcha $captcha
      */
