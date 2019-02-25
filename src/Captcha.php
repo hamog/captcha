@@ -1,80 +1,79 @@
 <?php
 
 namespace Hamog\Captcha;
+
 /**
- * Class Captcha
- * @package Hamog\Captcha
+ * Class Captcha.
+ *
  * @author hashem Moghaddari <hashemm364@gmail.com>
  */
 class Captcha
 {
     /**
-     * Image resource
+     * Image resource.
      *
      * @var resource
      */
     protected $img;
 
     /**
-     * Image width
+     * Image width.
      *
      * @var int
      */
     protected $width;
 
     /**
-     * Image height
+     * Image height.
      *
      * @var int
      */
     protected $height;
 
     /**
-     * Image Background color
+     * Image Background color.
      *
      * @var string
      */
     protected $backColor;
 
     /**
-     * Image Font color
+     * Image Font color.
      *
      * @var string
      */
     protected $fontColor;
 
     /**
-     * Image font file path
+     * Image font file path.
      *
      * @var string
      */
     protected $font;
 
     /**
-     * Image font size
+     * Image font size.
      *
      * @var int
      */
     protected $size;
 
     /**
-     * Length of captcha code
+     * Length of captcha code.
      *
      * @var int
      */
     protected $length;
 
     /**
-     * Set attributes values
+     * Set attributes values.
      *
      * @return void
      */
     protected function configure()
     {
-        if (config()->has('captcha'))
-        {
-            foreach(config('captcha') as $key => $value)
-            {
+        if (config()->has('captcha')) {
+            foreach (config('captcha') as $key => $value) {
                 $key = camel_case($key);
                 $this->{$key} = $value;
             }
@@ -86,7 +85,7 @@ class Captcha
     }
 
     /**
-     * Generate random text
+     * Generate random text.
      *
      * @return string
      */
@@ -94,8 +93,8 @@ class Captcha
     {
         $alphaNumeric = array_merge(range('A', 'Z'), range('a', 'z'), range(0, 9));
         $text = '';
-        for ($i=0; $i < $this->length; $i++) {
-            $text .= $alphaNumeric[rand(0, count($alphaNumeric) -1)];
+        for ($i = 0; $i < $this->length; $i++) {
+            $text .= $alphaNumeric[rand(0, count($alphaNumeric) - 1)];
         }
         //put captcha code into session
         session(['captcha' => $text]);
@@ -104,52 +103,53 @@ class Captcha
     }
 
     /**
-     * Convert Hexadecimal to RGB font color
+     * Convert Hexadecimal to RGB font color.
      *
      * @return array
      */
-    protected function hex2rgb() {
-        $hex = str_replace("#", "", $this->fontColor);
+    protected function hex2rgb()
+    {
+        $hex = str_replace('#', '', $this->fontColor);
 
-        if(strlen($hex) == 3) {
-            $r = hexdec(substr($hex,0,1).substr($hex,0,1));
-            $g = hexdec(substr($hex,1,1).substr($hex,1,1));
-            $b = hexdec(substr($hex,2,1).substr($hex,2,1));
+        if (strlen($hex) == 3) {
+            $r = hexdec(substr($hex, 0, 1).substr($hex, 0, 1));
+            $g = hexdec(substr($hex, 1, 1).substr($hex, 1, 1));
+            $b = hexdec(substr($hex, 2, 1).substr($hex, 2, 1));
         } else {
-            $r = hexdec(substr($hex,0,2));
-            $g = hexdec(substr($hex,2,2));
-            $b = hexdec(substr($hex,4,2));
+            $r = hexdec(substr($hex, 0, 2));
+            $g = hexdec(substr($hex, 2, 2));
+            $b = hexdec(substr($hex, 4, 2));
         }
-        $rgb = array($r, $g, $b);
+        $rgb = [$r, $g, $b];
         //return implode(",", $rgb); // returns the rgb values separated by commas
         return $rgb; // returns an array with the rgb values
     }
 
     /**
-     * Create captcha image
+     * Create captcha image.
      */
     public function create()
     {
         $this->configure();
 
         imagefilledrectangle($this->img, 0, 0, $this->width, $this->height, $this->backColor);
-        imagettftext ($this->img, $this->size, -5, 10, 40, $this->fontColor, $this->font, $this->randomText());
-        header("Content-type: image/png");
+        imagettftext($this->img, $this->size, -5, 10, 40, $this->fontColor, $this->font, $this->randomText());
+        header('Content-type: image/png');
         imagepng($this->img);
     }
 
     /**
-     * Generate captcha image html tag
+     * Generate captcha image html tag.
      *
      * @return string img HTML Tag
      */
     public function img()
     {
-        return '<img src="' . $this->src() . '" alt="captcha">';
+        return '<img src="'.$this->src().'" alt="captcha">';
     }
 
     /**
-     * Check user input captcha code
+     * Check user input captcha code.
      *
      * @param string $input
      *
@@ -157,13 +157,13 @@ class Captcha
      */
     public function check($input)
     {
-        if ( ! session()->has('captcha')) {
+        if (!session()->has('captcha')) {
             return false;
         }
 
         $code = session()->pull('captcha');
 
-        if(config('captcha.sensitive')) {
+        if (config('captcha.sensitive')) {
             if ($input == $code) {
                 return true;
             } else {
@@ -179,12 +179,12 @@ class Captcha
     }
 
     /**
-     * Generate captcha image source
+     * Generate captcha image source.
      *
      * @return string
      */
     public function src()
     {
-        return url('captcha') . '?' . str_random(8);
+        return url('captcha').'?'.str_random(8);
     }
 }

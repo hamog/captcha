@@ -1,9 +1,9 @@
 <?php
 
-if ( ! function_exists('captcha')) {
+if (!function_exists('captcha')) {
 
     /**
-     * Return Image
+     * Return Image.
      *
      * @return resource
      */
@@ -13,9 +13,9 @@ if ( ! function_exists('captcha')) {
     }
 }
 
-if ( ! function_exists('captcha_src')) {
+if (!function_exists('captcha_src')) {
     /**
-     * Return Image URL
+     * Return Image URL.
      *
      * @return string
      */
@@ -25,10 +25,10 @@ if ( ! function_exists('captcha_src')) {
     }
 }
 
-if ( ! function_exists('captcha_img')) {
+if (!function_exists('captcha_img')) {
 
     /**
-     * Return Captcha HTML image
+     * Return Captcha HTML image.
      *
      * @return mixed
      */
@@ -38,12 +38,12 @@ if ( ! function_exists('captcha_img')) {
     }
 }
 
-
-if ( ! function_exists('captcha_check')) {
+if (!function_exists('captcha_check')) {
     /**
-     * Check captcha
+     * Check captcha.
      *
      * @param $value
+     *
      * @return bool
      */
     function captcha_check($value)
