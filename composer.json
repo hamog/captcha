@@ -1,7 +1,7 @@
 {
-  "name": "hamog/captcha",
+  "name": "ambitionphp/captcha",
   "type": "package",
-  "description": "Simple Laravel 5.2 Captcha Package",
+  "description": "Simple Laravel 6 Captcha Package",
   "keywords": ["laravel5 Captcha", "laravel5.2", "Captcha"],
   "homepage": "https://github.com/hamog/captcha",
   "authors": [
