@@ -1,6 +1,7 @@
 <?php
 
 namespace Hamog\Captcha;
+use Illuminate\Support\Str;
 
 /**
  * Class Captcha.
@@ -185,6 +186,6 @@ class Captcha
      */
     public function src()
     {
-        return url('captcha').'?'.str_random(8);
+        return url('captcha').'?'.Str::random(8);
     }
 }
